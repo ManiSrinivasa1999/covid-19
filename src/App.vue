@@ -1,35 +1,125 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app class="bg-color">
+    <v-container fluid>
+      <v-card
+        color="#10163A"
+      >
+        <v-container fluid>
+          <v-btn
+            to="/"
+            color="#5851BE"
+            dark
+          >
+            <v-icon
+              small
+            >
+              fas fa-home
+            </v-icon>
+            <span class="ml-2">
+              CORONA
+            </span>
+          </v-btn>
+          <v-btn
+            to="/contact"
+            small
+            class="ml-2"
+            text
+            color="#ACB0C8"
+          >
+            <v-icon
+              small
+            >
+              fas fa-phone-alt
+            </v-icon>
+            <span class="ml-2 mr-2">
+              contact & helpline info
+            </span>
+            <v-icon
+              small
+            >
+              fas fa-address-book
+            </v-icon>
+          </v-btn>
+          <v-btn
+            to="/precaution"
+            small
+            class="ml-2"
+            text
+            color="#ACB0C8"
+          >
+            <v-icon
+              small
+            >
+              fas fa-head-side-mask
+            </v-icon>
+            <span class="ml-2 mr-2">
+              precaution
+            </span>
+            <v-icon
+              small
+            >
+              fas fa-handshake-slash
+            </v-icon>
+          </v-btn>
+        </v-container>
+      </v-card>
+    </v-container>
+    <v-container fluid>
+      <v-card
+        color="#10163A"
+      >
+        <v-container fluid>
+          <v-btn
+            to="/"
+            color="#E4555B"
+            dark
+          >
+            <v-icon
+              small
+            >
+              fab fa-staylinked
+            </v-icon>
+            <span class="ml-2">
+              Stay Home / Stay Safe
+            </span>
+          </v-btn>
+          <br>
+        </v-container>
+      </v-card>
+    </v-container>
+
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+
+      <!-- Provides the application the proper gutter -->
+
+        <!-- If using vue-router -->
+        <router-view></router-view>
+    </v-main>
+
+    <!-- <v-footer app>
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        Copyright &copy;{{ new Date().getFullYear() }} — <strong>huntFSD</strong>
+      </v-col>
+    </v-footer> -->
+  </v-app>
 </template>
 
 <script>
+import { dom } from '@fortawesome/fontawesome-svg-core';
+
+export default {
+  mounted() {
+    dom.watch();
+  },
+};
 </script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+<style lang="scss" scoped>
+.bg-color {
+  background-color: #262C49 !important;
 }
 </style>
