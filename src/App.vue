@@ -16,7 +16,7 @@
               fas fa-home
             </v-icon>
             <span class="ml-2">
-              CORONA
+              COVID-19
             </span>
           </v-btn>
           <v-btn
@@ -73,6 +73,7 @@
             to="/"
             color="#E4555B"
             dark
+            class="mb-2 ml-2"
           >
             <v-icon
               small
@@ -84,6 +85,33 @@
             </span>
           </v-btn>
           <br>
+          <v-spacer></v-spacer>
+          <v-btn-toggle
+            v-model="text"
+            color="deep-purple accent-3"
+            group
+            borderless
+          >
+            <v-btn value="notifications" to="/notifications" dark>
+              Notifications & advisories
+            </v-btn>
+
+            <v-btn value="hospitals" to="/hospital" dark>
+              Hospitals & beds
+            </v-btn>
+
+            <v-btn value="colleges" to="/medicalcolleges" dark>
+              Medical Colleges & beds
+            </v-btn>
+
+            <v-btn value="comparison" to="/comparison" dark>
+              Comparison of daily sample tests
+            </v-btn>
+
+            <v-btn value="confirmed" to="/confirmed" dark>
+              confirmed cases of the patients.
+            </v-btn>
+          </v-btn-toggle>
         </v-container>
       </v-card>
     </v-container>
@@ -114,6 +142,11 @@ import { dom } from '@fortawesome/fontawesome-svg-core';
 export default {
   mounted() {
     dom.watch();
+  },
+  data() {
+    return {
+      // text: 'notifications',
+    };
   },
 };
 </script>
