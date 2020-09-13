@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Confirmed',
+  name: 'Graph',
 };
 </script>
 
