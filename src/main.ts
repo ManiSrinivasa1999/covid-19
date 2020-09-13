@@ -6,6 +6,7 @@ import {
   faHeadSideMask,
   faHome,
   faPhoneAlt,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faStaylinked,
@@ -18,6 +19,7 @@ import store from './store';
 import vuetify from './plugins/vuetify';
 
 library.add(
+  faBars,
   faHome,
   faPhoneAlt,
   faHeadSideMask,

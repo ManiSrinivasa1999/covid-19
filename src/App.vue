@@ -3,14 +3,17 @@
 
     <!-- Sizes your content based upon application components -->
     <v-main>
-      <v-container fluid>
+      <v-container
+        fluid
+        v-if="$vuetify.breakpoint.lgAndUp"
+      >
         <v-card
           color="primary"
         >
           <v-container fluid>
             <v-btn
               to="/"
-              color="#5851BE"
+              color="secondary"
               dark
             >
               <v-icon
@@ -67,14 +70,17 @@
           </v-container>
         </v-card>
       </v-container>
-      <v-container fluid>
+      <v-container
+        fluid
+        v-if="$vuetify.breakpoint.lgAndUp"
+      >
         <v-card
           color="primary"
         >
           <v-container fluid>
             <v-btn
               to="/"
-              color="#E4555B"
+              color="error"
               dark
               class="mb-2 ml-2 mt-1"
             >
@@ -116,6 +122,72 @@
           </v-container>
         </v-card>
       </v-container>
+      <v-app-bar
+        v-if="$vuetify.breakpoint.mdAndDown"
+        color="primary"
+      >
+        <v-btn
+          to="/"
+          color="secondary"
+          dark
+        >
+          <v-icon
+            small
+          >
+            fas fa-home
+          </v-icon>
+          <span class="ml-2">
+            COVID-19
+          </span>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer">
+          <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="secondary" icon v-bind="attrs" v-on="on">
+                <v-icon>fas fa-bars</v-icon>
+              </v-btn>
+            </template>
+            <v-list
+              no-action
+              color="secondary"
+            >
+              <v-list-item
+                v-for="button in buttons"
+                :key="button.label"
+                :to="button.url"
+              >
+                <v-list-item-content
+                  class="title-color"
+                >
+                  <v-list-item-title>{{ button.label }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-app-bar-nav-icon>
+      </v-app-bar>
+      <v-container
+        fluid
+        v-if="$vuetify.breakpoint.mdAndDown"
+        class="text-center"
+      >
+        <v-btn
+          to="/"
+          color="error"
+          dark
+          class="mt-2"
+        >
+          <v-icon
+            small
+          >
+            fab fa-staylinked
+          </v-icon>
+          <span class="ml-2">
+            Stay Home / Stay Safe
+          </span>
+        </v-btn>
+      </v-container>
 
       <!-- Provides the application the proper gutter -->
 
@@ -144,6 +216,33 @@ export default {
   data() {
     return {
       // text: 'notifications',
+      drawer: null,
+      buttons: [
+        {
+          label: 'Contact & Helpline Info',
+          url: '/contact',
+        },
+        {
+          label: 'Precautions',
+          url: '/precautions',
+        },
+        {
+          label: 'Notifications & Advisories',
+          url: '/notifications',
+        },
+        {
+          label: 'Hospitals & Beds',
+          url: '/hospital',
+        },
+        {
+          label: 'Medical Colleges & Beds',
+          url: '/medicalcolleges',
+        },
+        {
+          label: 'Graph for Deceased Person',
+          url: '/graph',
+        },
+      ],
     };
   },
 };
@@ -152,5 +251,8 @@ export default {
 <style lang="scss" scoped>
 .bg-color {
   background-color: #262C49 !important;
+}
+.title-color {
+  color: #BDBDBD !important;
 }
 </style>

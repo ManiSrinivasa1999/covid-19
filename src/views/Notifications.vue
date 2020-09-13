@@ -592,7 +592,7 @@ export default {
 <style lang="scss" scoped>
 
 .link-text {
-  color: #E4555B;
+  color: error;
   text-decoration: none;
 }
 

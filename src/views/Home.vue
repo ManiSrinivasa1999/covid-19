@@ -1,8 +1,7 @@
 <template>
   <v-container fluid>
     <div
-      class="text-center text-h4
-      text-color"
+      class="text-center text-h4 text-color"
     >
       STATS IN INDIA
     </div>
