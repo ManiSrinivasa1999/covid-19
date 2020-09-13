@@ -2,10 +2,74 @@
   <v-container fluid>
     <v-card
       color="primary"
+      v-if="$vuetify.breakpoint.smAndDown"
     >
-      <v-card-title class="text-h5 titlecolor">
+      <v-card-text class="white--text text-h6 text-center">
         Medical Colleges & Beds
-      </v-card-title>
+      </v-card-text>
+      <v-row>
+        <v-col cols="12" sm="12"
+          v-for="(medicalCollege, i) in medicalCollegesData.medicalColleges"
+          :key="i"
+        >
+          <v-container fluid>
+            <v-card
+              color="primary"
+            >
+              <v-card-text class="text-center text-h6 font-weight-bold titlecolor">
+                {{ medicalCollege.state }}
+              </v-card-text><v-chip
+                large
+                color="primary lighten-1"
+                label
+                class="ma-2 chip-width"
+              >
+                Institute Name: {{ medicalCollege.name }}
+              </v-chip>
+              <v-chip
+                large
+                color="primary lighten-1"
+                label
+                class="ma-2 chip-width"
+              >
+                City: {{ medicalCollege.city }}
+              </v-chip>
+              <v-chip
+                large
+                color="primary lighten-1"
+                label
+                class="ma-2 chip-width"
+              >
+                Type: {{ medicalCollege.ownership }}
+              </v-chip>
+              <v-chip
+                large
+                color="primary lighten-1"
+                label
+                class="ma-2 chip-width"
+              >
+                Admission Capacity {{ medicalCollege.admissionCapacity }}
+              </v-chip>
+              <v-chip
+                large
+                color="primary lighten-1"
+                label
+                class="ma-2 chip-width"
+              >
+                Hospital Beds: {{ medicalCollege.hospitalBeds }}
+              </v-chip>
+            </v-card>
+          </v-container>
+        </v-col>
+      </v-row>
+    </v-card>
+    <v-card
+      color="primary"
+      v-if="$vuetify.breakpoint.mdAndUp"
+    >
+      <v-card-text class="text-h5 text-center titlecolor">
+        Medical Colleges & Beds
+      </v-card-text>
        <v-card-text>
         <v-container>
           <v-data-table

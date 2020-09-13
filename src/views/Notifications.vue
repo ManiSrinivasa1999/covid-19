@@ -1,41 +1,46 @@
 <template>
   <v-container fluid>
-    <v-row
+    <v-card
+      color="primary"
       v-if="$vuetify.breakpoint.smAndDown"
     >
-      <span class="white--text text-center">
+      <v-card-text class="white--text text-h6 text-center">
         Notifications & Advisories
-      </span>
-      <v-col cols="12" sm="12"
-        v-for="(notification, i) in notificationsData.notifications"
-        :key="i"
-      >
-        <v-card
-          color="primary"
+      </v-card-text>
+      <v-row>
+        <v-col cols="12" sm="12"
+          v-for="(notification, i) in notificationsData.notifications"
+          :key="i"
         >
-          <v-card-text class="text-center text-title font-weight-bold titlecolor">
-            {{ notification.title }}
-          </v-card-text>
-          <v-divider light></v-divider>
-          <v-card-text class="text-center cardtext-color">
-            <a
-              :href="notification.link"
-              target="_blank"
-              class="link-text"
+          <v-container>
+            <v-card
+              color="secondary darken-1"
             >
-              {{ notification.link }}
-            </a>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+              <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                {{ notification.title }}
+              </v-card-text>
+              <v-divider light></v-divider>
+              <v-card-text class="text-center cardtext-color">
+                <a
+                  :href="notification.link"
+                  target="_blank"
+                  class="link-text"
+                >
+                  {{ notification.link }}
+                </a>
+              </v-card-text>
+            </v-card>
+          </v-container>
+        </v-col>
+      </v-row>
+    </v-card>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.mdAndUp"
     >
-      <v-card-title class="text-h5 titlecolor">
+      <v-card-text class="text-h5 titlecolor text-center">
         Notifications & Advisories
-      </v-card-title>
+      </v-card-text>
        <v-card-text>
         <v-container>
           <v-data-table

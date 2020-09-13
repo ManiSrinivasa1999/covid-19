@@ -1,24 +1,33 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" lg="2" md="2" sm="10"
-        v-for="(region, i) in contactData.contacts.regional"
-        :key="i"
-      >
-        <v-card
-          height="177px"
-          color="primary"
+  <v-container fluid>
+    <v-card
+      color="primary"
+    >
+      <v-card-text class="white--text text-h5 text-center titlecolor">
+        Contacts & Helpline Info
+      </v-card-text>
+      <v-row>
+        <v-col cols="12" xl="2" lg="3" md="3" sm="10"
+          v-for="(region, i) in contactData.contacts.regional"
+          :key="i"
         >
-          <v-card-text class="mt-4 text-center text-h6 titlecolor">
-            {{ region.loc }}
-          </v-card-text>
-          <v-divider light></v-divider>
-          <v-card-text class="text-h6 mt-4 text-center cardtext-color">
-            {{ region.number }}
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+          <v-container fluid>
+            <v-card
+              height="177px"
+              color="secondary darken-1"
+            >
+              <v-card-text class="mt-4 text-center text-h6 titlecolor">
+                {{ region.loc }}
+              </v-card-text>
+              <v-divider light></v-divider>
+              <v-card-text class="text-h6 mt-4 text-center cardtext-color">
+                {{ region.number }}
+              </v-card-text>
+            </v-card>
+          </v-container>
+        </v-col>
+      </v-row>
+    </v-card>
   </v-container>
 </template>
 <script>
@@ -55,7 +64,7 @@ export default {
 <style lang="scss" scoped>
 
 .cardtext-color {
-  color: #5851BE !important;
+  color: #BDBDBD !important;
 }
 
 .titlecolor {
