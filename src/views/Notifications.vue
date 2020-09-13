@@ -1,30 +1,39 @@
 <template>
-  <v-container>
-    <v-simple-table
-      :dense="dense"
-      dark
+  <v-container fluid>
+    <v-card
+      color="#10163A"
     >
-      <template v-slot:default>
-        <thead>
-          <tr>
-            <th class="text-left">Date</th>
-            <th class="text-left">Notification Title</th>
-            <th class="text-left">Link</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="notification in data.notifications" :key="notification.title">
-            <td>{{ notification.title }}</td>
-            <td>{{ notification.title }}</td>
-            <td>
-              <a :href="notification.link" target="_blank" class="link-text">
-                {{ notification.link }}
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </template>
-    </v-simple-table>
+      <v-card-text class="text-h5 titlecolor">
+        Notifications & Advisories
+      </v-card-text>
+      <v-simple-table
+        :dense="dense"
+        dark
+        class="st-color"
+      >
+        <template v-slot:default>
+          <thead>
+            <tr>
+              <th class="text-left">Date</th>
+              <th class="text-left">Notification Title</th>
+              <th class="text-left">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="notification in data.notifications" :key="notification.title">
+              <td>{{ notification.title }}</td>
+              <td>{{ notification.title }}</td>
+              <td>
+                <a :href="notification.link" target="_blank" class="link-text">
+                  {{ notification.link }}
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
+
+    </v-card>
   </v-container>
 </template>
 
@@ -576,7 +585,16 @@ export default {
 <style lang="scss" scoped>
 
 .link-text {
-  color: #7367F0;
+  color: #E4555B;
+  text-decoration: none;
+}
+
+.titlecolor {
+  color: #BDBDBD !important;
+}
+
+.st-color {
+  background-color: transparent;
 }
 
 </style>

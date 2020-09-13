@@ -46,7 +46,7 @@
             <v-btn
               to="/precaution"
               small
-              class="ml-md-2 mt-sm-2"
+              class="ml-2"
               text
               color="#ACB0C8"
             >
@@ -76,7 +76,7 @@
               to="/"
               color="#E4555B"
               dark
-              class="mb-2 ml-2"
+              class="mb-2 ml-2 mt-1"
             >
               <v-icon
                 small
@@ -94,9 +94,10 @@
               color="deep-purple accent-3"
               group
               borderless
+              class="mt-2"
             >
               <v-btn value="notifications" to="/notifications" dark>
-                Notifications & advisories
+                Notifications & Advisories
               </v-btn>
 
               <v-btn value="hospitals" to="/hospital" dark>
