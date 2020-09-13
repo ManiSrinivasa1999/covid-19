@@ -6,6 +6,7 @@
         :key="i"
       >
         <v-card
+          height="177px"
           color="primary"
         >
           <v-card-text class="mt-4 text-center text-h6 titlecolor">

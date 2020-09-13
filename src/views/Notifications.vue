@@ -1,5 +1,30 @@
 <template>
-  <v-container fluid>
+  <v-container>
+    <v-row>
+      <v-col cols="12" lg="4" md="6" sm="10"
+        v-for="(notification, i) in notificationsData.notifications"
+        :key="i"
+      >
+        <v-card
+          color="primary"
+          height="199px"
+        >
+          <v-card-text class="text-center text-title font-weight-bold titlecolor">
+            {{ notification.title }}
+          </v-card-text>
+          <v-divider light></v-divider>
+          <v-card-text class="text-center cardtext-color">
+            <a
+              :href="notification.link"
+              target="_blank"
+              class="link-text"
+            >
+              {{ notification.link }}
+            </a>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
     >
@@ -30,7 +55,11 @@
                   <td>{{ notification.title }}</td>
                   <td>{{ notification.title }}</td>
                   <td>
-                    <a :href="notification.link" target="_blank" class="link-text">
+                    <a
+                      :href="notification.link"
+                      target="_blank"
+                      class="link-text"
+                    >
                       {{ notification.link }}
                     </a>
                   </td>
@@ -592,7 +621,7 @@ export default {
 <style lang="scss" scoped>
 
 .link-text {
-  color: error;
+  color: #E4555B !important;
   text-decoration: none;
 }
 
@@ -602,6 +631,10 @@ export default {
 
 .st-color {
   background-color: transparent;
+}
+
+.cardtext-color {
+  color:#E4555B !important;
 }
 
 </style>

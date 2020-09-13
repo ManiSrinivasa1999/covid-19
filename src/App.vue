@@ -158,7 +158,7 @@
                 :to="button.url"
               >
                 <v-list-item-content
-                  class="title-color"
+                  class="white--text"
                 >
                   <v-list-item-title>{{ button.label }}</v-list-item-title>
                 </v-list-item-content>
@@ -249,10 +249,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .bg-color {
   background-color: #262C49 !important;
 }
-.title-color {
-  color: #BDBDBD !important;
-}
+
 </style>
