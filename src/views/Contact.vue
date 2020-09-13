@@ -6,7 +6,7 @@
         :key="i"
       >
         <v-card
-          color="#10163A"
+          color="primary"
         >
           <v-card-text class="mt-4 text-center text-h6 titlecolor">
             {{ region.loc }}

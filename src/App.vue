@@ -5,7 +5,7 @@
     <v-main>
       <v-container fluid>
         <v-card
-          color="#10163A"
+          color="primary"
         >
           <v-container fluid>
             <v-btn
@@ -69,7 +69,7 @@
       </v-container>
       <v-container fluid>
         <v-card
-          color="#10163A"
+          color="primary"
         >
           <v-container fluid>
             <v-btn

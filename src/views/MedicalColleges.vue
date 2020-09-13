@@ -1,5 +1,49 @@
 <template>
-  <v-container></v-container>
+  <v-container fluid>
+    <v-card
+      color="primary"
+    >
+      <v-card-title class="text-h5 titlecolor">
+        Medical Colleges & Beds
+      </v-card-title>
+       <v-card-text>
+        <v-container>
+          <v-simple-table
+            :dense="dense"
+            dark
+            class="st-color"
+          >
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">State Name</th>
+                  <th class="text-left">Institute Name</th>
+                  <th class="text-left">City</th>
+                  <th class="text-left">Type</th>
+                  <th class="text-left">Admission Capacity</th>
+                  <th class="text-left">Hospital Beds</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(medicalCollege, i) in medicalCollegesData.medicalColleges"
+                  :key="i"
+                  :class="i % 2 ? 'primary' : 'primary lighten-1'"
+                >
+                  <td>{{ medicalCollege.state }}</td>
+                  <td>{{ medicalCollege.name }}</td>
+                  <td>{{ medicalCollege.city }}</td>
+                  <td>{{ medicalCollege.ownership }}</td>
+                  <td>{{ medicalCollege.admissionCapacity }}</td>
+                  <td>{{ medicalCollege.hospitalBeds }}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </v-container>
+       </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -4023,5 +4067,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.titlecolor {
+  color: #BDBDBD !important;
+}
+
+.st-color {
+  background-color: transparent;
+}
 
 </style>

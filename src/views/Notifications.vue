@@ -1,38 +1,45 @@
 <template>
   <v-container fluid>
     <v-card
-      color="#10163A"
+      color="primary"
     >
-      <v-card-text class="text-h5 titlecolor">
+      <v-card-title class="text-h5 titlecolor">
         Notifications & Advisories
-      </v-card-text>
-      <v-simple-table
-        :dense="dense"
-        dark
-        class="st-color"
-      >
-        <template v-slot:default>
-          <thead>
-            <tr>
-              <th class="text-left">Date</th>
-              <th class="text-left">Notification Title</th>
-              <th class="text-left">Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="notification in data.notifications" :key="notification.title">
-              <td>{{ notification.title }}</td>
-              <td>{{ notification.title }}</td>
-              <td>
-                <a :href="notification.link" target="_blank" class="link-text">
-                  {{ notification.link }}
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </template>
-      </v-simple-table>
-
+      </v-card-title>
+       <v-card-text>
+        <v-container>
+          <v-simple-table
+            :dense="dense"
+            dark
+            class="st-color"
+          >
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th class="text-left">Date</th>
+                  <th class="text-left">Notification Title</th>
+                  <th class="text-left">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  v-for="(notification, i) in notificationsData.notifications"
+                  :key="i"
+                  :class="i % 2 ? 'primary' : 'primary lighten-1'"
+                >
+                  <td>{{ notification.title }}</td>
+                  <td>{{ notification.title }}</td>
+                  <td>
+                    <a :href="notification.link" target="_blank" class="link-text">
+                      {{ notification.link }}
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </v-container>
+       </v-card-text>
     </v-card>
   </v-container>
 </template>
@@ -43,7 +50,7 @@ export default {
   data() {
     return {
       success: true,
-      data: {
+      notificationsData: {
         notifications: [
           {
             title: 'PIB',
