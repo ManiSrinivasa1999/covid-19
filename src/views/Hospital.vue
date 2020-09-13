@@ -7,6 +7,56 @@
         Hospitals & Beds
       </v-card-title>
       <v-card-text>
+        <div class="text-center">
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width"
+          >
+            Rural Hospitals: {{ hospitalData.summary.ruralHospitals }}
+          </v-chip>
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width mx-auto"
+          >
+            Rural Beds: {{ hospitalData.summary.ruralBeds }}
+          </v-chip>
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width"
+          >
+            Urban Hospitals: {{ hospitalData.summary.urbanHospitals }}
+          </v-chip>
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width"
+          >
+            Urban Beds: {{ hospitalData.summary.urbanBeds }}
+          </v-chip>
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width"
+          >
+            Total Hospitals: {{ hospitalData.summary.totalHospitals }}
+          </v-chip>
+          <v-chip
+            large
+            color="primary lighten-1"
+            label
+            class="ma-2 chip-width"
+          >
+            Total Beds: {{ hospitalData.summary.totalBeds }}
+          </v-chip>
+        </div>
         <v-container>
           <v-simple-table
             :dense="dense"
@@ -17,12 +67,24 @@
               <thead>
                 <tr>
                   <th class="text-left">State Name</th>
-                  <th class="text-left">Rural Hospitals</th>
-                  <th class="text-left">Rural Beds</th>
-                  <th class="text-left">Urban Hospitals</th>
-                  <th class="text-left">Urban Beds</th>
-                  <th class="text-left">Total Hospitals</th>
-                  <th class="text-left">Total Beds</th>
+                  <th class="text-left">
+                    Rural Hospitals
+                  </th>
+                  <th class="text-left">
+                    Rural Beds
+                  </th>
+                  <th class="text-left">
+                    Urban Hospitals
+                  </th>
+                  <th class="text-left">
+                    Urban Beds
+                  </th>
+                  <th class="text-left">
+                    Total Hospitals
+                  </th>
+                  <th class="text-left">
+                    Total Beds
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -458,5 +520,11 @@ export default {
 .st-color {
   background-color: transparent;
 }
+
+// .chip-width {
+//   width: 187px !important;
+//   align-self: center !important;
+//   justify-self: center !important;
+// }
 
 </style>

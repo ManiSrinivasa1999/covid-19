@@ -1,13 +1,17 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12" lg="4" md="6" sm="10"
+  <v-container fluid>
+    <v-row
+      v-if="$vuetify.breakpoint.smAndDown"
+    >
+      <span class="white--text text-center">
+        Notifications & Advisories
+      </span>
+      <v-col cols="12" sm="12"
         v-for="(notification, i) in notificationsData.notifications"
         :key="i"
       >
         <v-card
           color="primary"
-          height="199px"
         >
           <v-card-text class="text-center text-title font-weight-bold titlecolor">
             {{ notification.title }}
@@ -27,6 +31,7 @@
     </v-row>
     <v-card
       color="primary"
+      v-if="$vuetify.breakpoint.mdAndUp"
     >
       <v-card-title class="text-h5 titlecolor">
         Notifications & Advisories
@@ -41,9 +46,17 @@
             <template v-slot:default>
               <thead>
                 <tr>
-                  <th class="text-left">Date</th>
-                  <th class="text-left">Notification Title</th>
-                  <th class="text-left">Link</th>
+                  <v-row class="pa-0 ma-0">
+                    <v-col cols="12" md="1">
+                      <th class="text-left">Date</th>
+                    </v-col>
+                    <v-col cols="12" md="5">
+                      <th class="text-left">Notification Title</th>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <th class="text-left">Link</th>
+                    </v-col>
+                  </v-row>
                 </tr>
               </thead>
               <tbody>
@@ -52,17 +65,25 @@
                   :key="i"
                   :class="i % 2 ? 'primary' : 'primary lighten-1'"
                 >
-                  <td>{{ notification.title }}</td>
-                  <td>{{ notification.title }}</td>
-                  <td>
-                    <a
-                      :href="notification.link"
-                      target="_blank"
-                      class="link-text"
-                    >
-                      {{ notification.link }}
-                    </a>
-                  </td>
+                  <v-row class="pa-0 ma-0">
+                    <v-col cols="12" md="1">
+                      <td>{{ notification.title.slice(0,10) }}</td>
+                    </v-col>
+                    <v-col cols="12" md="5">
+                      <td>{{ notification.title.slice(10) }}</td>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                      <td>
+                        <a
+                          :href="notification.link"
+                          target="_blank"
+                          class="link-text"
+                        >
+                          {{ notification.link }}
+                        </a>
+                      </td>
+                    </v-col>
+                  </v-row>
                 </tr>
               </tbody>
             </template>
