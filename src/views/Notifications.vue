@@ -50,50 +50,6 @@
             loading-text
             loading
           >
-            <template v-slot:default>
-              <thead>
-                <tr>
-                  <v-row class="pa-0 ma-0">
-                    <v-col cols="12" md="1">
-                      <th class="text-left">Date</th>
-                    </v-col>
-                    <v-col cols="12" md="5">
-                      <th class="text-left">Notification Title</th>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <th class="text-left">Link</th>
-                    </v-col>
-                  </v-row>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="(notification, i) in notificationsData.notifications"
-                  :key="i"
-                  :class="i % 2 ? 'primary' : 'primary lighten-1'"
-                >
-                  <v-row class="pa-0 ma-0">
-                    <v-col cols="12" md="1">
-                      <td>{{ notification.title.slice(0,10) }}</td>
-                    </v-col>
-                    <v-col cols="12" md="5">
-                      <td>{{ notification.title.slice(10) }}</td>
-                    </v-col>
-                    <v-col cols="12" md="6">
-                      <td>
-                        <a
-                          :href="notification.link"
-                          target="_blank"
-                          class="link-text"
-                        >
-                          {{ notification.link }}
-                        </a>
-                      </td>
-                    </v-col>
-                  </v-row>
-                </tr>
-              </tbody>
-            </template>
           </v-data-table>
         </v-container>
        </v-card-text>
