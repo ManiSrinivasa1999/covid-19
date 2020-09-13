@@ -7,6 +7,11 @@ import {
   faHome,
   faPhoneAlt,
   faBars,
+  faSortUp,
+  faSortDown,
+  faCaretDown,
+  faChevronRight,
+  faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faStaylinked,
@@ -26,6 +31,11 @@ library.add(
   faHandshakeSlash,
   faAddressBook,
   faStaylinked,
+  faSortUp,
+  faSortDown,
+  faCaretDown,
+  faChevronRight,
+  faChevronLeft,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
