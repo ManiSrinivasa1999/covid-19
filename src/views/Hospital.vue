@@ -1,13 +1,138 @@
 <template>
   <v-container fluid>
+    <v-row
+      v-if="$vuetify.breakpoint.smAndDown"
+    >
+      <span class="white--text text-center">
+        Hospitals & Beds
+      </span>
+      <v-container fluid>
+        <v-card
+        color="primary"
+        >
+          <div class="text-center">
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Rural Hospitals: {{ hospitalData.summary.ruralHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Rural Beds: {{ hospitalData.summary.ruralBeds }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Urban Hospitals: {{ hospitalData.summary.urbanHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Urban Beds: {{ hospitalData.summary.urbanBeds }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Total Hospitals: {{ hospitalData.summary.totalHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2"
+            >
+              Total Beds: {{ hospitalData.summary.totalBeds }}
+            </v-chip>
+          </div>
+        </v-card>
+        <v-divider light>
+        </v-divider>
+        <v-col cols="12" sm="12"
+          v-for="(region, i) in hospitalData.regional"
+          :key="i"
+        >
+          <v-card
+            color="primary"
+          >
+            <v-card-text class="text-center text-title font-weight-bold titlecolor">
+              {{ region.state }}
+            </v-card-text><v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Rural Hospitals: {{ region.ruralHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Rural Beds: {{ region.ruralBeds }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Urban Hospitals: {{ region.urbanHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Urban Beds: {{ region.urbanBeds }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Total Hospitals: {{ region.totalHospitals }}
+            </v-chip>
+            <v-chip
+              large
+              color="primary lighten-1"
+              label
+              class="ma-2 chip-width"
+            >
+              Total Beds: {{ region.totalBeds }}
+            </v-chip>
+          </v-card>
+        </v-col>
+      </v-container>
+    </v-row>
     <v-card
       color="primary"
+      v-if="$vuetify.breakpoint.mdAndUp"
     >
       <v-card-title class="text-h5 titlecolor">
         Hospitals & Beds
       </v-card-title>
       <v-card-text>
-         <div class="text-center">
+        <div class="text-center">
           <v-chip
             large
             color="primary lighten-1"
@@ -20,7 +145,7 @@
             large
             color="primary lighten-1"
             label
-            class="ma-2 chip-width mx-auto"
+            class="ma-2 chip-width"
           >
             Rural Beds: {{ hospitalData.summary.ruralBeds }}
           </v-chip>
@@ -164,10 +289,8 @@ export default {
   background-color: transparent;
 }
 
-// .chip-width {
-//   width: 187px !important;
-//   align-self: center !important;
-//   justify-self: center !important;
-// }
+.chip-width {
+  width: 162px !important;
+}
 
 </style>
