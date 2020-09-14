@@ -7,124 +7,99 @@
       <v-card-text class="white--text text-h5 text-center titlecolor">
         Hospitals & Beds
       </v-card-text>
+      <v-card
+        color="primary"
+      >
+        <div class="text-center">
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Rural Hospitals: {{ hospitalData.summary.ruralHospitals }}
+          </v-chip>
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Rural Beds: {{ hospitalData.summary.ruralBeds }}
+          </v-chip>
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Urban Hospitals: {{ hospitalData.summary.urbanHospitals }}
+          </v-chip>
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Urban Beds: {{ hospitalData.summary.urbanBeds }}
+          </v-chip>
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Total Hospitals: {{ hospitalData.summary.totalHospitals }}
+          </v-chip>
+          <v-chip
+            color="primary lighten-1"
+            label
+            class="ma-2"
+          >
+            Total Beds: {{ hospitalData.summary.totalBeds }}
+          </v-chip>
+        </div>
+      </v-card>
       <v-row>
-        <v-container fluid>
-          <v-card
-            color="primary"
-          >
-            <div class="text-center">
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Rural Hospitals: {{ hospitalData.summary.ruralHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Rural Beds: {{ hospitalData.summary.ruralBeds }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Urban Hospitals: {{ hospitalData.summary.urbanHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Urban Beds: {{ hospitalData.summary.urbanBeds }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Total Hospitals: {{ hospitalData.summary.totalHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2"
-              >
-                Total Beds: {{ hospitalData.summary.totalBeds }}
-              </v-chip>
-            </div>
-          </v-card>
-          <v-divider light>
-          </v-divider>
-          <v-col cols="12" sm="12"
-            v-for="(region, i) in hospitalData.regional"
-            :key="i"
-          >
+        <v-col cols="12" sm="6" xs="12"
+          v-for="(region, i) in hospitalData.regional"
+          :key="i"
+        >
+          <v-container>
             <v-card
-              color="primary"
+              color="secondary darken-1"
             >
               <v-card-text class="text-center text-title font-weight-bold titlecolor">
                 {{ region.state }}
-              </v-card-text><v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Rural Hospitals: {{ region.ruralHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Rural Beds: {{ region.ruralBeds }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Urban Hospitals: {{ region.urbanHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Urban Beds: {{ region.urbanBeds }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Total Hospitals: {{ region.totalHospitals }}
-              </v-chip>
-              <v-chip
-                large
-                color="primary lighten-1"
-                label
-                class="ma-2 chip-width"
-              >
-                Total Beds: {{ region.totalBeds }}
-              </v-chip>
+              </v-card-text>
+              <v-row>
+                <v-col cols="6" sm="6" xs="6">
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Rural Hospitals
+                    <br> {{ region.ruralHospitals }}
+                  </v-card-text>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Rural Beds
+                    <br> {{ region.ruralBeds }}
+                  </v-card-text>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Urban Hospitals
+                    <br> {{ region.urbanHospitals }}
+                  </v-card-text>
+                </v-col>
+                <v-col cols="6" sm="6" xs="5">
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Urban Beds
+                    <br> {{ region.urbanBeds }}
+                  </v-card-text>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Total Hospitals
+                    <br> {{ region.totalHospitals }}
+                  </v-card-text>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    Total Beds
+                    <br> {{ region.totalBeds }}
+                  </v-card-text>
+                </v-col>
+              </v-row>
             </v-card>
-          </v-col>
-        </v-container>
+          </v-container>
+        </v-col>
       </v-row>
     </v-card>
     <v-card
@@ -208,7 +183,6 @@
               false,
               false,
             ]"
-            multi-sort
             dark
             class="st-color"
             loading-text
@@ -293,7 +267,7 @@ export default {
 }
 
 .chip-width {
-  width: 165px !important;
+  width: 158px !important;
 }
 
 </style>

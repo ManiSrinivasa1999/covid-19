@@ -20,7 +20,7 @@
                 {{ region.loc }}
               </v-card-text>
               <v-divider light></v-divider>
-              <v-card-text class="text-h6 mt-4 text-center cardtext-color">
+              <v-card-text class="text-h6 mt-4 text-center white--text">
                 {{ region.number }}
               </v-card-text>
             </v-card>
@@ -63,12 +63,8 @@ export default {
 
 <style lang="scss" scoped>
 
-.cardtext-color {
-  color: #BDBDBD !important;
-}
-
 .titlecolor {
-  color: #BDBDBD !important;
+  color: #E0F7FA !important;
 }
 
 </style>

@@ -54,7 +54,6 @@
             :items="sanitizedNotifications"
             :sort-by="['date', 'title']"
             :sort-desc="[false, true]"
-            multi-sort
             dark
             class="st-color"
             loading-text
@@ -141,7 +140,7 @@ export default {
 }
 
 .titlecolor {
-  color: #BDBDBD !important;
+  color: #E0F7FA !important;
 }
 
 .st-color {
