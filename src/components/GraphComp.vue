@@ -6,8 +6,8 @@
           <apexchart
             class="bg-color"
             type="line"
-            :options="options"
-            :series="series"
+            :options="filteredData.options"
+            :series="filteredData.series"
           ></apexchart>
         </v-container>
       </v-col>
@@ -16,20 +16,22 @@
           <v-select
             solo
             v-model="selectedState"
-            :items="items"
             label="States"
+            background-color="secondary lighten-5"
           ></v-select>
           <v-select
             solo
             v-model="selectedAgeRange"
             :items="age"
             label="Age Groups"
+            background-color="secondary lighten-5"
           ></v-select>
           <v-select
             solo
             v-model="selectedGender"
             :items="gender"
             label="Gender"
+            background-color="secondary lighten-5"
           ></v-select>
           <span class="white--text text-h6">
             Date Range
@@ -51,6 +53,7 @@
                 class="mt-4"
                 v-bind="attrs"
                 v-on="on"
+                background-color="secondary lighten-5"
               ></v-text-field>
             </template>
             <v-date-picker v-model="startDate" no-title @input="menu1 = false"></v-date-picker>
@@ -71,6 +74,7 @@
                 label="End Date"
                 v-bind="attrs"
                 v-on="on"
+                background-color="secondary lighten-5"
               ></v-text-field>
             </template>
             <v-date-picker v-model="endDate" no-title @input="menu2 = false"></v-date-picker>
@@ -90,12 +94,51 @@ export default {
     return {
       menu1: false,
       menu2: false,
-      startDate: '',
-      endDate: '',
-      selectedState: '',
-      selectedGender: '',
-      selectedAgeRange: '',
+      startDate: '26/03/2020',
+      endDate: '26/04/2020',
+      selectedState: 'Andhra Pradesh',
+      selectedGender: 'Male',
+      selectedAgeRange: '40-49',
       patientData: [],
+      states: [
+        'Andaman and Nicobar Islands',
+        'Andhra Pradesh',
+        'Arunachal Pradesh',
+        'Assam',
+        'Bihar',
+        'Chandigarh',
+        'Chhattisgarh',
+        'Dadra and Nagar Haveli',
+        'Daman and Diu',
+        'Delhi',
+        'Goa',
+        'Gujarat',
+        'Haryana',
+        'Himachal Pradesh',
+        'Jammu and Kashmir',
+        'Jharkhand',
+        'Karnataka',
+        'Kerala',
+        'Ladakh',
+        'Lakshadweep',
+        'Madhya Pradesh',
+        'Maharashtra',
+        'Manipur',
+        'Meghalaya',
+        'Mizoram',
+        'Nagaland',
+        'Odisha',
+        'Puducherry',
+        'Punjab',
+        'Rajasthan',
+        'Sikkim',
+        'Tamil Nadu',
+        'Telangana',
+        'Tripura',
+        'Uttar Pradesh',
+        'Uttarakhand',
+        'West Bengal',
+      ],
       age: [
         '0-9',
         '10-19',
@@ -138,16 +181,13 @@ export default {
     loadCSV(csvURL) {
       papa.parse(csvURL, {
         download: true,
-        complete(data) {
-          this.patientData = data;
+        complete: (data) => {
+          this.patientData = data.data;
         },
       });
     },
   },
   computed: {
-    dateRangeText() {
-      return this.dates.join(' ~ ');
-    },
     filteredData() {
       const header = this.patientData[0];
       const patientData = [];
@@ -182,7 +222,7 @@ export default {
       // Filter State
       const stateFilter = [];
       const selectedStates = new Set(this.selectedState);
-      patientData.forEach((patientRecord) => {
+      ageFilter.forEach((patientRecord) => {
         if (selectedStates.has(patientRecord.state)) {
           stateFilter.push(patientRecord);
         }
@@ -190,19 +230,26 @@ export default {
       // Filter Date Range
       // const dateRangeFilter = [];
       // const selectedDates = new Set();
-      // for (let k = this.startDate; k <= endAge; k += 1) {
-      //   selectedAges.add(j);
-      // }
+      const historicalData = {};
+      patientData.forEach((patientRecord) => {
+        if (patientRecord.reportedOn in historicalData) {
+          historicalData[patientRecord.reportedOn] += 1;
+        } else {
+          historicalData[patientRecord.reportedOn] = 1;
+        }
+      });
       return {
-        chart: {
-          id: 'vuechart-example',
-        },
-        xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        options: {
+          chart: {
+            id: 'vuechart-example',
+          },
+          xaxis: {
+            categories: Object.keys(historicalData),
+          },
         },
         series: [{
-          name: 'series-1',
-          data: [30, 40, 45, 50, 49, 60, 70, 91],
+          name: 'No of Deaths',
+          data: Object.values(historicalData),
         }],
       };
     },

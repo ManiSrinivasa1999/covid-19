@@ -46,27 +46,6 @@
                 fas fa-address-book
               </v-icon>
             </v-btn>
-            <v-btn
-              to="/precaution"
-              small
-              class="ml-2"
-              text
-              color="#ACB0C8"
-            >
-              <v-icon
-                small
-              >
-                fas fa-head-side-mask
-              </v-icon>
-              <span class="ml-2 mr-2">
-                precaution
-              </span>
-              <v-icon
-                small
-              >
-                fas fa-handshake-slash
-              </v-icon>
-            </v-btn>
           </v-container>
         </v-card>
       </v-container>
@@ -96,7 +75,6 @@
             <br>
             <v-spacer></v-spacer>
             <v-btn-toggle
-              v-model="text"
               color="deep-purple accent-3"
               group
               borderless
@@ -221,10 +199,6 @@ export default {
         {
           label: 'Contact & Helpline Info',
           url: '/contact',
-        },
-        {
-          label: 'Precautions',
-          url: '/precautions',
         },
         {
           label: 'Notifications & Advisories',

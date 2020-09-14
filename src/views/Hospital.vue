@@ -1,5 +1,19 @@
 <template>
   <v-container fluid>
+    <v-row align="end" justify="end">
+      <v-col cols="12" md="4" sm="12">
+        <v-text-field
+          solo
+          v-model="search"
+          append-icon="fas fa-search"
+          background-color="secondary lighten-5"
+          label="Search"
+          clearable
+          hide-details
+          class="mb-3"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.smAndDown"
@@ -165,6 +179,7 @@
             :dense="dense"
             :headers="headers"
             :items="sanitizedHospitals"
+            :search="search"
             :sort-by="[
               'state',
               'ruralHospitals',
@@ -203,6 +218,7 @@ export default {
   name: 'Hospital',
   data() {
     return {
+      search: '',
       headers: [
         {
           text: 'State Name',

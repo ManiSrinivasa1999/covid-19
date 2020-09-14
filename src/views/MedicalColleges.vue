@@ -1,5 +1,19 @@
 <template>
   <v-container fluid>
+    <v-row align="end" justify="end">
+      <v-col cols="12" md="4" sm="12">
+        <v-text-field
+          solo
+          v-model="search"
+          append-icon="fas fa-search"
+          background-color="secondary lighten-5"
+          label="Search"
+          clearable
+          hide-details
+          class="mb-3"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.smAndDown"
@@ -7,18 +21,6 @@
       <v-card-text class="white--text text-h6 text-center">
         Medical Colleges & Beds
       </v-card-text>
-      <v-row align="end" justify="end">
-        <v-col cols="12" md="4" sm="12" class="mr-md-3">
-          <v-text-field
-            solo
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          ></v-text-field>
-        </v-col>
-      </v-row>
       <v-row>
         <v-col cols="12" sm="12"
           v-for="(medicalCollege, i) in medicalCollegesData.medicalColleges"
@@ -72,18 +74,6 @@
       <v-card-text class="text-h5 text-center titlecolor">
         Medical Colleges & Beds
       </v-card-text>
-      <v-row align="end" justify="end">
-        <v-col cols="12" md="4" sm="12" class="mr-md-3">
-          <v-text-field
-            solo
-            v-model="search"
-            append-icon="mdi-magnify"
-            label="Search"
-            single-line
-            hide-details
-          ></v-text-field>
-        </v-col>
-      </v-row>
        <v-card-text>
         <v-container>
           <v-data-table

@@ -12,6 +12,7 @@ import {
   faCaretDown,
   faChevronRight,
   faChevronLeft,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faStaylinked,
@@ -39,6 +40,7 @@ library.add(
   faCaretDown,
   faChevronRight,
   faChevronLeft,
+  faSearch,
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
