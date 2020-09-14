@@ -94,11 +94,11 @@ export default {
     return {
       menu1: false,
       menu2: false,
-      startDate: '26/03/2020',
-      endDate: '26/04/2020',
+      startDate: '',
+      endDate: '',
       selectedState: 'Andhra Pradesh',
       selectedGender: 'Male',
-      selectedAgeRange: '40-49',
+      selectedAgeRange: '',
       patientData: [],
       states: [
         'Andaman and Nicobar Islands',
