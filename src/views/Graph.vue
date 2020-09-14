@@ -1,17 +1,48 @@
 <template>
   <v-container fluid>
     <v-row>
-      <v-col cols="12" md="5" sm="10">
-        <apexchart
-          class="bg-color"
-          type="line"
-          :options="options"
-          :series="series"
-        >
-        </apexchart>
+      <v-col cols="12" md="6" sm="10">
+        <v-container>
+          <apexchart
+            class="bg-color"
+            type="line"
+            :options="options"
+            :series="series"
+          ></apexchart>
+        </v-container>
       </v-col>
-      <v-col cols="12" md="7" sm="10">
-
+      <v-col cols="12" md="3" sm="10">
+        <v-container>
+          <v-select
+            solo
+            :items="items"
+            label="States"
+          ></v-select>
+          <v-select
+            solo
+            :items="age"
+            label="Age Groups"
+          ></v-select>
+          <v-select
+            solo
+            :items="gender"
+            label="Gender"
+          ></v-select>
+          <span class="white--text text-h6">
+            Date Range
+          </span>
+          <v-text-field
+            v-model="dateRangeText"
+            readonly
+            solo
+            class="mt-2"
+          ></v-text-field>
+        </v-container>
+      </v-col>
+      <v-col cols="12" md="3" sm="10">
+        <v-container>
+          <v-date-picker v-model="dates" range></v-date-picker>
+        </v-container>
       </v-col>
     </v-row>
   </v-container>
@@ -24,6 +55,25 @@ export default {
   name: 'Graph',
   data() {
     return {
+      dates: [
+        '2019-09-10',
+        '2019-09-20',
+      ],
+      age: [
+        '0-9',
+        '10-19',
+        '20-29',
+        '30-39',
+        '40-49',
+        '50-59',
+        '60-69',
+        '70+',
+      ],
+      gender: [
+        'Male',
+        'Female',
+        'Others',
+      ],
       options: {
         chart: {
           id: 'vuechart-example',
@@ -52,6 +102,11 @@ export default {
       papa.parse(csvURL, {
         download: true,
       });
+    },
+  },
+  computed: {
+    dateRangeText() {
+      return this.dates.join(' ~ ');
     },
   },
 };
