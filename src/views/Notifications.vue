@@ -1,57 +1,76 @@
 <template>
   <v-container fluid>
-    <v-row align="end" justify="end">
-      <v-col cols="12" md="4" sm="12">
-        <v-text-field
-          solo
-          v-model="search"
-          append-icon="fas fa-search"
-          background-color="secondary lighten-5"
-          label="Search"
-          clearable
-          hide-details
-          class="mb-3"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-    <v-card
-      color="primary"
-      v-if="$vuetify.breakpoint.smAndDown"
+    <v-data-iterator
+      :items="notificationsData.notifications"
+      :search="search"
+      :items-per-page.sync="notificationsData.notifications.length"
+      :sort-desc="sortDesc"
+      light
+      hide-default-footer
     >
-      <v-card-text class="white--text text-h6 text-center">
-        Notifications & Advisories
-      </v-card-text>
-      <v-row>
-        <v-col cols="12" sm="12"
-          v-for="(notification, i) in sanitizedNotifications"
-          :key="i"
-        >
-          <v-container>
-            <v-card
-              color="secondary darken-1"
+      <template v-slot:header>
+        <v-row align="center" justify="end">
+          <v-col cols="12" md="4" sm="12" xs="12">
+            <v-toolbar
+              color="transparent"
+              dense
+              flat
+              class="mb-3"
             >
-              <v-card-text class="text-center text-title font-weight-bold titlecolor">
-                {{ notification.date }}
-              </v-card-text>
-              <v-divider light></v-divider>
-              <v-card-text class="text-center text-title font-weight-bold titlecolor">
-                {{ notification.title }}
-              </v-card-text>
-              <v-divider light></v-divider>
-              <v-card-text class="text-center cardtext-color">
-                <a
-                  :href="notification.link"
-                  target="_blank"
-                  class="link-text"
+              <v-text-field
+                v-model="search"
+                clearable
+                hide-details
+                solo
+                background-color="secondary lighten-5"
+                append-icon="fas fa-search"
+                label="Search"
+              ></v-text-field>
+            </v-toolbar>
+          </v-col>
+        </v-row>
+      </template>
+      <template v-slot:default="props">
+        <v-card
+          v-if="$vuetify.breakpoint.smAndDown"
+          color="primary"
+        >
+          <v-card-text class="white--text text-h6 text-center">
+            Notifications & Advisories
+          </v-card-text>
+          <v-row>
+            <v-col cols="12" sm="12"
+              v-for="(notification, i) in props.items"
+              :key="i"
+            >
+              <v-container>
+                <v-card
+                  color="secondary darken-1"
                 >
-                  {{ notification.link }}
-                </a>
-              </v-card-text>
-            </v-card>
-          </v-container>
-        </v-col>
-      </v-row>
-    </v-card>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    {{ notification.date }}
+                  </v-card-text>
+                  <v-divider light></v-divider>
+                  <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                    {{ notification.title }}
+                  </v-card-text>
+                  <v-divider light></v-divider>
+                  <v-card-text class="text-center cardtext-color">
+                    <a
+                      :href="notification.link"
+                      target="_blank"
+                      class="link-text"
+                    >
+                      {{ notification.link }}
+                    </a>
+                  </v-card-text>
+                </v-card>
+              </v-container>
+            </v-col>
+          </v-row>
+        </v-card>
+      </template>
+    </v-data-iterator>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.mdAndUp"
@@ -89,6 +108,8 @@ export default {
   data() {
     return {
       search: '',
+      sortDesc: true,
+      sortBy: 'date',
       headers: [
         {
           text: 'Date',
