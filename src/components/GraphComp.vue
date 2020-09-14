@@ -16,14 +16,8 @@
           <v-select
             solo
             v-model="selectedState"
+            :items="states"
             label="States"
-            background-color="secondary lighten-5"
-          ></v-select>
-          <v-select
-            solo
-            v-model="selectedAgeRange"
-            :items="age"
-            label="Age Groups"
             background-color="secondary lighten-5"
           ></v-select>
           <v-select
@@ -31,6 +25,13 @@
             v-model="selectedGender"
             :items="gender"
             label="Gender"
+            background-color="secondary lighten-5"
+          ></v-select>
+          <v-select
+            solo
+            v-model="selectedAge"
+            :items="ages"
+            label="Ages"
             background-color="secondary lighten-5"
           ></v-select>
           <span class="white--text text-h6">
@@ -94,11 +95,11 @@ export default {
     return {
       menu1: false,
       menu2: false,
-      startDate: '26/03/2020',
-      endDate: '26/04/2020',
+      startDate: '',
+      endDate: '',
       selectedState: 'Andhra Pradesh',
       selectedGender: 'Male',
-      selectedAgeRange: '40-49',
+      selectedAge: '',
       patientData: [],
       states: [
         'Andaman and Nicobar Islands',
@@ -139,7 +140,7 @@ export default {
         'Uttarakhand',
         'West Bengal',
       ],
-      age: [
+      ages: [
         '0-9',
         '10-19',
         '20-29',
@@ -147,7 +148,7 @@ export default {
         '40-49',
         '50-59',
         '60-69',
-        '70+',
+        '70-79',
       ],
       gender: [
         'Male',
@@ -200,7 +201,8 @@ export default {
       });
       // filter Gender
       const genderFilter = [];
-      const selectedGenders = new Set(this.selectedGender);
+      const selectedGenders = new Set();
+      selectedGenders.add(this.selectedGender.toLowerCase());
       patientData.forEach((patientRecord) => {
         if (selectedGenders.has(patientRecord.gender)) {
           genderFilter.push(patientRecord);
@@ -208,8 +210,9 @@ export default {
       });
       // Filter Age
       const ageFilter = [];
-      const startAge = this.selectedAgeRange.split('-')[0];
-      const endAge = this.selectedAgeRange.split('-')[1];
+      const startAge = this.selectedAge.split('-')[0];
+      const endAge = this.selectedAge.split('-')[1];
+      console.log(startAge);
       const selectedAges = new Set();
       for (let j = startAge; j <= endAge; j += 1) {
         selectedAges.add(j);
@@ -222,7 +225,7 @@ export default {
       // Filter State
       const stateFilter = [];
       const selectedStates = new Set(this.selectedState);
-      ageFilter.forEach((patientRecord) => {
+      genderFilter.forEach((patientRecord) => {
         if (selectedStates.has(patientRecord.state)) {
           stateFilter.push(patientRecord);
         }
@@ -231,7 +234,7 @@ export default {
       // const dateRangeFilter = [];
       // const selectedDates = new Set();
       const historicalData = {};
-      patientData.forEach((patientRecord) => {
+      ageFilter.forEach((patientRecord) => {
         if (patientRecord.reportedOn in historicalData) {
           historicalData[patientRecord.reportedOn] += 1;
         } else {
