@@ -9,13 +9,17 @@
       </v-card-text>
       <v-row>
         <v-col cols="12" sm="12"
-          v-for="(notification, i) in notificationsData.notifications"
+          v-for="(notification, i) in sanitizedNotifications"
           :key="i"
         >
           <v-container>
             <v-card
               color="secondary darken-1"
             >
+              <v-card-text class="text-center text-title font-weight-bold titlecolor">
+                {{ notification.date }}
+              </v-card-text>
+              <v-divider light></v-divider>
               <v-card-text class="text-center text-title font-weight-bold titlecolor">
                 {{ notification.title }}
               </v-card-text>
@@ -44,6 +48,7 @@
        <v-card-text>
         <v-container>
           <v-data-table
+            calculate-widths
             :dense="dense"
             :headers="headers"
             :items="sanitizedNotifications"
@@ -93,12 +98,18 @@ export default {
       this.notificationsData.notifications.forEach((notification) => {
         const unformattedDate = notification.title.slice(0, 10);
         let formattedDate = unformattedDate.split('.').reverse().join('-');
+        let letterCount = 0;
+        for (let position = 0; position < formattedDate.length; position += 1) {
+          if (formattedDate.charAt(position) === '-') {
+            letterCount += 1;
+          }
+        }
         let title = '';
-        if (new Date(formattedDate) !== 'Invalid Date') {
-          title = notification.title.slice(10);
-        } else {
+        if (letterCount < 2) {
           formattedDate = 'NA';
           title = notification.title;
+        } else {
+          title = notification.title.slice(10);
         }
         notifications.push({
           date: formattedDate,
@@ -141,4 +152,12 @@ export default {
   color:#E4555B !important;
 }
 
+.v-list .v-select-list .v-sheet {
+  background: #5851BE !important;
+  background-color: #5851BE !important;
+}
+
+.v-sheet.v-list:not(.v-sheet--outlined) {
+  background-color: #5851BE !important;
+}
 </style>

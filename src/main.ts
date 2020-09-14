@@ -17,11 +17,14 @@ import {
   faStaylinked,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import VueApexCharts from 'vue-apexcharts';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify';
+
+Vue.component('apexchart', VueApexCharts);
 
 library.add(
   faBars,
