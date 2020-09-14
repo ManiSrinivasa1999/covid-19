@@ -204,7 +204,7 @@ export default {
 }
 
 .st-color {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .cardtext-color {
