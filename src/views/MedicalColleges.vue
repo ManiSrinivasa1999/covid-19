@@ -14,7 +14,6 @@
           <v-col cols="12" md="4" sm="12" xs="12">
             <v-toolbar
               color="transparent"
-              dense
               flat
               class="mb-3"
             >
@@ -114,7 +113,6 @@
        <v-card-text>
         <v-container>
           <v-data-table
-            :dense="dense"
             :headers="headers"
             :items="sanitizedColleges"
             :search="search"

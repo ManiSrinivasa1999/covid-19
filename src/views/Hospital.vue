@@ -14,7 +14,6 @@
           <v-col cols="12" md="4" sm="12" xs="12">
             <v-toolbar
               color="transparent"
-              dense
               flat
               class="mb-3"
             >
@@ -213,7 +212,6 @@
         </div>
         <v-container>
           <v-data-table
-            :dense="dense"
             :headers="headers"
             :items="sanitizedHospitals"
             :search="search"

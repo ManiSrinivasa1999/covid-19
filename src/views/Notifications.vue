@@ -14,7 +14,6 @@
           <v-col cols="12" md="4" sm="12" xs="12">
             <v-toolbar
               color="transparent"
-              dense
               flat
               class="mb-3"
             >
@@ -100,7 +99,6 @@
         <v-container>
           <v-data-table
             :search="search"
-            :dense="dense"
             :headers="headers"
             :items="sanitizedNotifications"
             :sort-by="['date', 'title']"
