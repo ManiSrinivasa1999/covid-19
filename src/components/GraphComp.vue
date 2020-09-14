@@ -57,7 +57,10 @@
                 background-color="secondary lighten-5"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="startDate" no-title @input="menu1 = false"></v-date-picker>
+            <v-date-picker
+              :max="endDate"
+              v-model="startDate"
+              no-title @input="menu1 = false"></v-date-picker>
           </v-menu>
           <v-menu
             ref="menu2"
@@ -78,7 +81,11 @@
                 background-color="secondary lighten-5"
               ></v-text-field>
             </template>
-            <v-date-picker v-model="endDate" no-title @input="menu2 = false"></v-date-picker>
+            <v-date-picker
+              :min="startDate"
+              v-model="endDate"
+              no-title @input="menu2 = false"
+            ></v-date-picker>
           </v-menu>
         </v-container>
       </v-col>
@@ -88,6 +95,7 @@
 
 <script>
 import * as papa from 'papaparse';
+import moment from 'moment';
 
 export default {
   name: 'GraphComp',
@@ -95,8 +103,8 @@ export default {
     return {
       menu1: false,
       menu2: false,
-      startDate: '',
-      endDate: '',
+      startDate: '2020-02-19',
+      endDate: '2020-04-19',
       selectedState: 'Andhra Pradesh',
       selectedGender: 'Male',
       selectedAge: '',
@@ -209,32 +217,45 @@ export default {
         }
       });
       // Filter Age
-      const ageFilter = [];
-      const startAge = this.selectedAge.split('-')[0];
-      const endAge = this.selectedAge.split('-')[1];
-      console.log(startAge);
-      const selectedAges = new Set();
-      for (let j = startAge; j <= endAge; j += 1) {
-        selectedAges.add(j);
-      }
-      genderFilter.forEach((patientRecord) => {
-        if (selectedAges.has(patientRecord.age)) {
-          ageFilter.push(patientRecord);
-        }
-      });
+      // const ageFilter = [];
+      // const startAge = this.selectedAge.split('-')[0];
+      // const endAge = this.selectedAge.split('-')[1];
+      // const selectedAges = new Set();
+      // for (let j = startAge; j <= endAge; j += 1) {
+      //   selectedAges.add(j);
+      // }
+      // genderFilter.forEach((patientRecord) => {
+      //   if (selectedAges.has(patientRecord.age)) {
+      //     ageFilter.push(patientRecord);
+      //   }
+      // });
       // Filter State
       const stateFilter = [];
-      const selectedStates = new Set(this.selectedState);
+      const selectedStates = new Set();
+      selectedStates.add(this.selectedState);
       genderFilter.forEach((patientRecord) => {
         if (selectedStates.has(patientRecord.state)) {
           stateFilter.push(patientRecord);
         }
       });
       // Filter Date Range
-      // const dateRangeFilter = [];
-      // const selectedDates = new Set();
+      const dateRangeFilter = [];
+      const startDateEpoch = moment(this.startDate).unix();
+      const endDateEpoch = moment(this.endDate).unix();
+      const selectedDates = new Set();
+      for (
+        let dateEpoch = startDateEpoch;
+        dateEpoch <= endDateEpoch;
+        dateEpoch += 86400) {
+        selectedDates.add(moment.unix(dateEpoch).format('DD/MM/YYYY'));
+      }
+      stateFilter.forEach((patientRecord) => {
+        if (selectedDates.has(patientRecord.reportedOn)) {
+          dateRangeFilter.push(patientRecord);
+        }
+      });
       const historicalData = {};
-      ageFilter.forEach((patientRecord) => {
+      dateRangeFilter.forEach((patientRecord) => {
         if (patientRecord.reportedOn in historicalData) {
           historicalData[patientRecord.reportedOn] += 1;
         } else {

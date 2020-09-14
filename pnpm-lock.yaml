@@ -8,6 +8,7 @@ dependencies:
   axios: 0.20.0
   core-js: 3.6.5
   firebase: 7.20.0
+  moment: 2.28.0
   papaparse: 5.3.0
   register-service-worker: 1.7.1
   vue: 2.6.12
@@ -8291,6 +8292,10 @@ packages:
       webpack: ^4.0.0
     resolution:
       integrity: sha512-/gOsgJk3CWlNiOdef7hrNhp37VpatB9IiWzSCxS2p8pG21R7NAKJBBsU5T0eUWT9oz1NQhyubXdQgh51U7oVZA==
+  /moment/2.28.0:
+    dev: false
+    resolution:
+      integrity: sha512-Z5KOjYmnHyd/ukynmFd/WwyXHd7L4J9vTI/nn5Ap9AVUgaAE15VvQ9MOGmJJygEUklupqIrFnor/tjTwRU+tQw==
   /move-concurrently/1.0.1:
     dependencies:
       aproba: 1.2.0
@@ -12863,6 +12868,7 @@ specifiers:
   firebase: ^7.20.0
   geckodriver: ^1.20.0
   lint-staged: ^9.5.0
+  moment: ^2.28.0
   node-sass: ^4.12.0
   papaparse: ^5.3.0
   register-service-worker: ^1.7.1

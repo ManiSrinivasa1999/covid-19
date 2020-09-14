@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
     <v-data-iterator
-      :items="notificationsData.notifications"
+      v-if="$vuetify.breakpoint.smAndDown"
+      :items="sanitizedNotifications"
       :search="search"
       :items-per-page.sync="notificationsData.notifications.length"
       :sort-desc="sortDesc"
@@ -32,7 +33,6 @@
       </template>
       <template v-slot:default="props">
         <v-card
-          v-if="$vuetify.breakpoint.smAndDown"
           color="primary"
         >
           <v-card-text class="white--text text-h6 text-center">
