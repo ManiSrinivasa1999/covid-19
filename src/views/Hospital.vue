@@ -1,6 +1,7 @@
 <template>
   <v-container fluid>
      <v-data-iterator
+      v-if="$vuetify.breakpoint.smAndDown"
       :items="hospitalData.regional"
       :search="search"
       :items-per-page.sync="hospitalData.regional.length"
@@ -33,7 +34,6 @@
       <template v-slot:default="props">
         <v-card
           color="primary"
-          v-if="$vuetify.breakpoint.smAndDown"
         >
           <v-card-text class="white--text text-h5 text-center titlecolor">
             Hospitals & Beds
@@ -135,6 +135,24 @@
         </v-card>
       </template>
     </v-data-iterator>
+    <v-row
+      v-if="$vuetify.breakpoint.mdAndUp"
+      align="end"
+      justify="end"
+    >
+      <v-col cols="12" md="4" sm="12">
+        <v-text-field
+          solo
+          v-model="search"
+          append-icon="fas fa-search"
+          background-color="secondary lighten-5"
+          label="Search"
+          clearable
+          hide-details
+          class="mb-3"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.mdAndUp"
@@ -221,7 +239,6 @@
             class="st-color"
             loading-text
             loading
-            v-if="$vuetify.breakpoint.mdAndUp"
           >
           </v-data-table>
         </v-container>

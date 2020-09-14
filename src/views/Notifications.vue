@@ -71,6 +71,24 @@
         </v-card>
       </template>
     </v-data-iterator>
+    <v-row
+      v-if="$vuetify.breakpoint.mdAndUp"
+      align="end"
+      justify="end"
+    >
+      <v-col cols="12" md="4" sm="12">
+        <v-text-field
+          solo
+          v-model="search"
+          append-icon="fas fa-search"
+          background-color="secondary lighten-5"
+          label="Search"
+          clearable
+          hide-details
+          class="mb-3"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.mdAndUp"
@@ -81,7 +99,6 @@
        <v-card-text>
         <v-container>
           <v-data-table
-            calculate-widths
             :search="search"
             :dense="dense"
             :headers="headers"
@@ -89,10 +106,19 @@
             :sort-by="['date', 'title']"
             :sort-desc="[false, true]"
             dark
-            class="st-color"
+            class="st-color elevation-1"
             loading-text
             loading
           >
+            <template v-slot:item.link="{ item }">
+              <a
+                :href="item.link"
+                target="_blank"
+                class="link-text"
+              >
+                {{ item.link }}
+              </a>
+            </template>
           </v-data-table>
         </v-container>
        </v-card-text>
@@ -173,7 +199,6 @@ export default {
 
 .link-text {
   color: #E4555B !important;
-  text-decoration: none;
 }
 
 .titlecolor {

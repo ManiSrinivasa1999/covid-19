@@ -109,45 +109,7 @@ export default {
       selectedGender: 'Male',
       selectedAge: '',
       patientData: [],
-      states: [
-        'Andaman and Nicobar Islands',
-        'Andhra Pradesh',
-        'Arunachal Pradesh',
-        'Assam',
-        'Bihar',
-        'Chandigarh',
-        'Chhattisgarh',
-        'Dadra and Nagar Haveli',
-        'Daman and Diu',
-        'Delhi',
-        'Goa',
-        'Gujarat',
-        'Haryana',
-        'Himachal Pradesh',
-        'Jammu and Kashmir',
-        'Jharkhand',
-        'Karnataka',
-        'Kerala',
-        'Ladakh',
-        'Lakshadweep',
-        'Madhya Pradesh',
-        'Maharashtra',
-        'Manipur',
-        'Meghalaya',
-        'Mizoram',
-        'Nagaland',
-        'Odisha',
-        'Puducherry',
-        'Punjab',
-        'Rajasthan',
-        'Sikkim',
-        'Tamil Nadu',
-        'Telangana',
-        'Tripura',
-        'Uttar Pradesh',
-        'Uttarakhand',
-        'West Bengal',
-      ],
+      states: [],
       ages: [
         '0-9',
         '10-19',
@@ -192,6 +154,11 @@ export default {
         download: true,
         complete: (data) => {
           this.patientData = data.data;
+          const states = new Set([]);
+          this.patientData.slice(1).forEach((patientRecord) => {
+            states.add(patientRecord[7]);
+          });
+          this.states = Array.from(states);
         },
       });
     },

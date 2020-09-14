@@ -1,6 +1,7 @@
 <template>
   <v-container fluid>
     <v-data-iterator
+      v-if="$vuetify.breakpoint.smAndDown"
       :items="medicalCollegesData.medicalColleges"
       :search="search"
       :items-per-page.sync="medicalCollegesData.medicalColleges.length"
@@ -33,7 +34,6 @@
       <template v-slot:default="props">
         <v-card
           color="primary"
-          v-if="$vuetify.breakpoint.smAndDown"
         >
           <v-card-text class="white--text text-h6 text-center">
             Medical Colleges & Beds
@@ -86,6 +86,24 @@
         </v-card>
       </template>
     </v-data-iterator>
+    <v-row
+      v-if="$vuetify.breakpoint.mdAndUp"
+      align="end"
+      justify="end"
+    >
+      <v-col cols="12" md="4" sm="12">
+        <v-text-field
+          solo
+          v-model="search"
+          append-icon="fas fa-search"
+          background-color="secondary lighten-5"
+          label="Search"
+          clearable
+          hide-details
+          class="mb-3"
+        ></v-text-field>
+      </v-col>
+    </v-row>
     <v-card
       color="primary"
       v-if="$vuetify.breakpoint.mdAndUp"
