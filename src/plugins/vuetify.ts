@@ -1,7 +1,9 @@
-import Vue from 'vue';
-import Vuetify from 'vuetify/lib';
+import { createApp } from 'vue';
+import Vuetify from 'vuetify';
+import App from '../App.vue';
 
-Vue.use(Vuetify);
+const app = createApp(App);
+app.use(Vuetify);
 
 export default new Vuetify({
   theme: {

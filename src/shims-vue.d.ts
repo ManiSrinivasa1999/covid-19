@@ -1,3 +1,3 @@
 declare module '*.vue' {
-  import "vuetify"
+  import 'vuetify';
 }

@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import GraphComp from '@/components/GraphComp.vue';
+import GraphComp from '../components/GraphComp.vue';
 
 export default {
-  name: 'Graph',
+  name: 'Covid_Graph',
   components: {
     GraphComp,
   },

@@ -1,4 +1,5 @@
-import Vue from 'vue';
+// Vue
+import { createApp } from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faAddressBook,
@@ -17,15 +18,15 @@ import {
 import {
   faStaylinked,
 } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import VueApexCharts from 'vue-apexcharts';
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+// import VueApexCharts from 'vue-apexcharts';
 import App from './App.vue';
-import './registerServiceWorker';
-import router from './router';
-import store from './store';
-import vuetify from './plugins/vuetify';
+import './registerServiceWorker.ts';
+// import router from './router';
+// import store from './store';
+// import vuetify from './plugins/vuetify';
 
-Vue.component('apexchart', VueApexCharts);
+// Vue.component('apex-chart', VueApexCharts);
 
 library.add(
   faBars,
@@ -43,13 +44,10 @@ library.add(
   faSearch,
 );
 
-Vue.component('font-awesome-icon', FontAwesomeIcon);
+// Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-Vue.config.productionTip = false;
-
-new Vue({
-  router,
-  store,
-  vuetify,
-  render: (h) => h(App),
-}).$mount('#app');
+const app = createApp(App);
+// app.use(router);
+// app.use(store);
+// app.use(vuetify);
+app.mount('#app');

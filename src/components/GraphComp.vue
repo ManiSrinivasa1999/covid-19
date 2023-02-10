@@ -16,7 +16,7 @@
                 type="line"
                 :options="filteredData.options"
                 :series="filteredData.series"
-              ></apexchart>
+              />
             </v-container>
           </v-col>
           <v-col cols="12" xl="6" lg="4" md="12" sm="12">
@@ -27,14 +27,14 @@
                 :items="states"
                 label="States"
                 background-color="secondary lighten-5"
-              ></v-select>
+              />
               <v-select
                 solo
                 v-model="selectedGender"
                 :items="gender"
                 label="Gender"
                 background-color="secondary lighten-5"
-              ></v-select>
+              />
               <v-select
                 solo
                 v-model="selectedAge"
@@ -43,7 +43,7 @@
                 :items="ages"
                 label="Ages"
                 background-color="secondary lighten-5"
-              ></v-select>
+              />
               <span class="white--text text-h6">
                 Date Range
               </span>
@@ -65,12 +65,13 @@
                     v-bind="attrs"
                     v-on="on"
                     background-color="secondary lighten-5"
-                  ></v-text-field>
+                  />
                 </template>
                 <v-date-picker
                   :max="endDate"
                   v-model="startDate"
-                  no-title @input="menu1 = false"></v-date-picker>
+                  no-title
+                  @input="menu1 = false" />
               </v-menu>
               <v-menu
                 ref="menu2"
@@ -89,13 +90,14 @@
                     v-bind="attrs"
                     v-on="on"
                     background-color="secondary lighten-5"
-                  ></v-text-field>
+                  />
                 </template>
                 <v-date-picker
                   :min="startDate"
                   v-model="endDate"
-                  no-title @input="menu2 = false"
-                ></v-date-picker>
+                  no-title
+                  @input="menu2 = false"
+                />
               </v-menu>
               <v-btn
                 @click="downloadPDF()"
@@ -110,7 +112,7 @@
                     solo
                     label="Email"
                     background-color="secondary lighten-5"
-                  ></v-text-field>
+                  />
                 </v-col>
                 <v-col cols="2">
                   <v-btn

@@ -73,7 +73,7 @@
               </span>
             </v-btn>
             <br>
-            <v-spacer></v-spacer>
+            <v-spacer />
             <v-btn-toggle
               color="deep-purple accent-3"
               group
@@ -118,7 +118,7 @@
             COVID-19
           </span>
         </v-btn>
-        <v-spacer></v-spacer>
+        <v-spacer />
         <v-app-bar-nav-icon @click.stop="drawer = !drawer">
           <v-menu offset-y>
             <template v-slot:activator="{ on, attrs }">
@@ -169,8 +169,8 @@
 
       <!-- Provides the application the proper gutter -->
 
-        <!-- If using vue-router -->
-        <router-view></router-view>
+      <!-- If using vue-router -->
+      <router-view />
     </v-main>
 
     <!-- <v-footer app>

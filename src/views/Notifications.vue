@@ -4,7 +4,7 @@
       v-if="$vuetify.breakpoint.smAndDown"
       :items="sanitizedNotifications"
       :search="search"
-      :items-per-page.sync="notificationsData.notifications.length"
+      :items-per-page="notificationsData.notifications.length"
       :sort-desc="sortDesc"
       light
       hide-default-footer
@@ -25,7 +25,7 @@
                 background-color="secondary lighten-5"
                 append-icon="fas fa-search"
                 label="Search"
-              ></v-text-field>
+              />
             </v-toolbar>
           </v-col>
         </v-row>
@@ -38,7 +38,9 @@
             Notifications & Advisories
           </v-card-text>
           <v-row>
-            <v-col cols="12" sm="12"
+            <v-col
+              cols="12"
+              sm="12"
               v-for="(notification, i) in props.items"
               :key="i"
             >
@@ -49,15 +51,16 @@
                   <v-card-text class="text-center text-title font-weight-bold titlecolor">
                     {{ notification.date }}
                   </v-card-text>
-                  <v-divider light></v-divider>
+                  <v-divider light />
                   <v-card-text class="text-center text-title font-weight-bold titlecolor">
                     {{ notification.title }}
                   </v-card-text>
-                  <v-divider light></v-divider>
+                  <v-divider light />
                   <v-card-text class="text-center cardtext-color">
                     <a
                       :href="notification.link"
                       target="_blank"
+                      rel="noopener noreferrer"
                       class="link-text"
                     >
                       {{ notification.link }}
@@ -85,7 +88,7 @@
           clearable
           hide-details
           class="mb-3"
-        ></v-text-field>
+        />
       </v-col>
     </v-row>
     <v-card
@@ -95,7 +98,7 @@
       <v-card-text class="text-h5 titlecolor text-center">
         Notifications & Advisories
       </v-card-text>
-       <v-card-text>
+      <v-card-text>
         <v-container>
           <v-data-table
             :search="search"
@@ -108,10 +111,11 @@
             loading-text
             loading
           >
-            <template v-slot:item.link="{ item }">
+            <template v-slot:item="{ item }">
               <a
                 :href="item.link"
                 target="_blank"
+                rel="noopener noreferrer"
                 class="link-text"
               >
                 {{ item.link }}
@@ -119,7 +123,7 @@
             </template>
           </v-data-table>
         </v-container>
-       </v-card-text>
+      </v-card-text>
     </v-card>
   </v-container>
 </template>
@@ -128,7 +132,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Notifications',
+  name: 'Covid_Notifications',
   data() {
     return {
       search: '',

@@ -4,7 +4,7 @@
       v-if="$vuetify.breakpoint.smAndDown"
       :items="medicalCollegesData.medicalColleges"
       :search="search"
-      :items-per-page.sync="medicalCollegesData.medicalColleges.length"
+      :items-per-page="medicalCollegesData.medicalColleges.length"
       :sort-desc="sortDesc"
       light
       hide-default-footer
@@ -25,7 +25,7 @@
                 background-color="secondary lighten-5"
                 append-icon="fas fa-search"
                 label="Search"
-              ></v-text-field>
+              />
             </v-toolbar>
           </v-col>
         </v-row>
@@ -38,7 +38,9 @@
             Medical Colleges & Beds
           </v-card-text>
           <v-row>
-            <v-col cols="12" sm="12"
+            <v-col
+              cols="12"
+              sm="12"
               v-for="(medicalCollege, i) in props.items"
               :key="i"
             >
@@ -100,7 +102,7 @@
           clearable
           hide-details
           class="mb-3"
-        ></v-text-field>
+        />
       </v-col>
     </v-row>
     <v-card
@@ -110,7 +112,7 @@
       <v-card-text class="text-h5 text-center titlecolor">
         Medical Colleges & Beds
       </v-card-text>
-       <v-card-text>
+      <v-card-text>
         <v-container>
           <v-data-table
             :headers="headers"
@@ -136,10 +138,9 @@
             class="st-color"
             loading-text
             loading
-          >
-          </v-data-table>
+          />
         </v-container>
-       </v-card-text>
+      </v-card-text>
     </v-card>
   </v-container>
 </template>

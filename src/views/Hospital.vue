@@ -1,15 +1,15 @@
 <template>
   <v-container fluid>
-     <v-data-iterator
+    <v-data-iterator
       v-if="$vuetify.breakpoint.smAndDown"
       :items="hospitalData.regional"
       :search="search"
-      :items-per-page.sync="hospitalData.regional.length"
+      :items-per-page="hospitalData.regional.length"
       :sort-desc="sortDesc"
       light
       hide-default-footer
     >
-       <template v-slot:header>
+      <template v-slot:header>
         <v-row align="center" justify="end">
           <v-col cols="12" md="4" sm="12" xs="12">
             <v-toolbar
@@ -25,7 +25,7 @@
                 background-color="secondary lighten-5"
                 append-icon="fas fa-search"
                 label="Search"
-              ></v-text-field>
+              />
             </v-toolbar>
           </v-col>
         </v-row>
@@ -86,7 +86,10 @@
             </div>
           </v-card>
           <v-row>
-            <v-col cols="12" sm="6" xs="12"
+            <v-col
+              cols="12"
+              sm="6"
+              xs="12"
               v-for="(region, i) in props.items"
               :key="i"
             >
@@ -149,7 +152,7 @@
           clearable
           hide-details
           class="mb-3"
-        ></v-text-field>
+        />
       </v-col>
     </v-row>
     <v-card
@@ -222,7 +225,7 @@
               'urbanHospitals',
               'urbanBeds',
               'totalHospitals',
-              'totalBeds'
+              'totalBeds',
             ]"
             :sort-desc="[
               true,
@@ -237,8 +240,7 @@
             class="st-color"
             loading-text
             loading
-          >
-          </v-data-table>
+          />
         </v-container>
       </v-card-text>
     </v-card>
@@ -249,7 +251,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Hospital',
+  name: 'Covid_Hospital',
   data() {
     return {
       search: '',

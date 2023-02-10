@@ -3,7 +3,7 @@
     <v-data-iterator
       :items="contactData.contacts.regional"
       :search="search"
-      :items-per-page.sync="contactData.contacts.regional.length"
+      :items-per-page="contactData.contacts.regional.length"
       :sort-desc="sortDesc"
       light
       hide-default-footer
@@ -24,7 +24,7 @@
                 background-color="secondary lighten-5"
                 append-icon="fas fa-search"
                 label="Search"
-              ></v-text-field>
+              />
             </v-toolbar>
           </v-col>
         </v-row>
@@ -37,7 +37,12 @@
             Contacts & Helpline Info
           </v-card-text>
           <v-row>
-            <v-col cols="12" xl="2" lg="3" md="3" sm="10"
+            <v-col
+              cols="12"
+              xl="2"
+              lg="3"
+              md="3"
+              sm="10"
               v-for="(region, i) in props.items"
               :key="i"
             >
@@ -49,7 +54,7 @@
                   <v-card-text class="mt-4 text-center text-h6 titlecolor">
                     {{ region.loc }}
                   </v-card-text>
-                  <v-divider light></v-divider>
+                  <v-divider light />
                   <v-card-text class="text-h6 mt-4 text-center white--text">
                     {{ region.number }}
                   </v-card-text>
@@ -66,7 +71,7 @@
 import axios from 'axios';
 
 export default {
-  name: 'Contact',
+  name: 'Covid_Contact',
   data() {
     return {
       search: '',
